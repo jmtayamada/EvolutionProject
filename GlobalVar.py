@@ -1,0 +1,2 @@
+global organisms
+organisms =[]
