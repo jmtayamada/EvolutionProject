@@ -29,4 +29,5 @@ while running:
   for obj in organisms:
     obj.Turn()
   pygame.display.update()
+  clock.tick(5)
 pygame.quit()
