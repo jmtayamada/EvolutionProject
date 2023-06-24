@@ -1,7 +1,5 @@
-import pygame
-from Classes.Basic import *
 from Classes.Grass import *
-from pygame.locals import *
+from Classes.Herbivore import *
 from GlobalVar import *
 
 pygame.init()
@@ -19,15 +17,22 @@ running = True
 
 screen.fill("white")
 
-organisms.append(Grass(5, 5, [0, 1], screen))
+for obj in range(20):
+  organisms.append(Grass(RandomPosition(), RandomPosition(), [], screen))
 
+for obj in range(10):
+  organisms.append(Herbivore(RandomPosition(), RandomPosition(), [], screen))
 
 while running:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       running = False
   for obj in organisms:
-    obj.Turn()
+    if obj.type == "grass":
+      obj.Turn()
+  for obj in organisms:
+    if obj.type == "herbivore":
+      obj.Turn()
   pygame.display.update()
-  clock.tick(5)
+  clock.tick(10)
 pygame.quit()
